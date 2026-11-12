@@ -223,19 +223,54 @@ void InitApp()
 	window.contx = CreateCompatibleDC(window.dev_cont);
 	SelectObject(window.contx, CreateCompatibleBitmap(window.dev_cont, window.width, window.height));
 }
-bool cool(true)
+void cool()
 {
 	if (player.x < cup.x + 50 &&
 		player.x + 100 > cup.x &&
 		player.y < cup.y + 50 &&
 		player.y + 200 > cup.y)
-	
+	{
+		int right = player.x + 100 - cup.x ;
+		int left = cup.x +50 - player.x;
+		int up = cup.y + 50 - player.y  ;
+		int dawn = player.y + 200-  cup.y ;
+
+		
+	    /* if (left > right)
+			 WriteText(100, 160, ConvertNumInText(right), RGB(255, 0, 0));
+		 else 
+			 WriteText(100, 160, ConvertNumInText(left), RGB(255, 0, 0));
+
+		 if (up > dawn)
+		 WriteText(100, 160, ConvertNumInText(dawn), RGB(255, 0, 0));
+		 else
+			 WriteText(100, 160, ConvertNumInText(up), RGB(255, 0, 0));*/
+		int a = min(left, right);
+		int b = min(up , dawn);
+		if (a > b)
+		{
+			if (up > dawn)
+				player.y = cup.y- 200;
+			else
+				player.y = cup.y + 50;
+		}
+		else
+		{
+			if (left > right)
+				player.x = cup.x - 100;
+			else
+				player.x = cup.x + 50;
+
+
+		}
+	}
+
 }
 
 //обновление приложения
 void UpdateApp()
 {
-
+	cool();
 
 }
 
