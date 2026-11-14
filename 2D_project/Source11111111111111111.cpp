@@ -249,17 +249,34 @@ void cool()
 		int b = min(up , dawn);
 		if (a > b)
 		{
-			if (up > dawn)
-				player.y = cup.y- 200;
-			else
-				player.y = cup.y + 50;
+			
+			
+				if (up > dawn)
+				{
+					player.y = cup.y - 200;
+					cup.y += 1;
+			    }
+				else
+				{
+					player.y = cup.y + 50;
+					cup.y -= 1;
+				}
+
 		}
 		else
 		{
 			if (left > right)
+			{
 				player.x = cup.x - 100;
+				cup.x += 1;
+			}
+
 			else
+
+			{
 				player.x = cup.x + 50;
+				cup.x -= 1;
+			}
 
 
 		}
